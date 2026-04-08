@@ -410,9 +410,23 @@ def run_session(elements: dict, session_id: int = 0, proxy_config: dict = None):
                 time.sleep(ad_wait)
             except Exception as e:
                 _print(f"cryptyos visit failed: {e}")
+            input('read the code and extract iframe')
 
             page.goto(f"https://mohmal.eu.org/?{EMAIL}", wait_until="domcontentloaded", timeout=60000)
             time.sleep(2)
+
+            # --- scan all iframes and print their text content ---
+            _print(f"Found {len(page.frames)} frames (including main)")
+            for i, frame in enumerate(page.frames):
+                try:
+                    _print(f"  frame[{i}] url: {frame.url[:80]}")
+                    text = frame.locator("*").all_inner_texts()
+                    flat = " | ".join(t.strip() for t in text if t.strip())
+                    if flat:
+                        _print(f"  frame[{i}] text: {flat[:500]}")
+                except Exception as e:
+                    _print(f"  frame[{i}] scan failed: {e}")
+            input('read the code and extract iframe')
 
             for i, frame in enumerate(page.frames[1:][:2]):
                 try:
