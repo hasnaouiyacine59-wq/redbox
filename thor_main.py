@@ -68,27 +68,77 @@ def get_ip_info(proxy_url: str = None, retries: int = 6, delay: int = 5) -> dict
     return {}
 
 CC_LANG = {
-    "US": ("en-US", "America/New_York",    "en-US,en;q=0.9"),
-    "GB": ("en-GB", "Europe/London",       "en-GB,en;q=0.9"),
-    "IT": ("it-IT", "Europe/Rome",         "it-IT,it;q=0.9,en;q=0.8"),
-    "DE": ("de-DE", "Europe/Berlin",       "de-DE,de;q=0.9,en;q=0.8"),
-    "FR": ("fr-FR", "Europe/Paris",        "fr-FR,fr;q=0.9,en;q=0.8"),
-    "ES": ("es-ES", "Europe/Madrid",       "es-ES,es;q=0.9,en;q=0.8"),
-    "NL": ("nl-NL", "Europe/Amsterdam",    "nl-NL,nl;q=0.9,en;q=0.8"),
-    "PL": ("pl-PL", "Europe/Warsaw",       "pl-PL,pl;q=0.9,en;q=0.8"),
-    "BR": ("pt-BR", "America/Sao_Paulo",   "pt-BR,pt;q=0.9,en;q=0.8"),
-    "RU": ("ru-RU", "Europe/Moscow",       "ru-RU,ru;q=0.9,en;q=0.8"),
-    "TR": ("tr-TR", "Europe/Istanbul",     "tr-TR,tr;q=0.9,en;q=0.8"),
-    "JP": ("ja-JP", "Asia/Tokyo",          "ja-JP,ja;q=0.9,en;q=0.8"),
-    "CN": ("zh-CN", "Asia/Shanghai",       "zh-CN,zh;q=0.9,en;q=0.8"),
-    "SE": ("sv-SE", "Europe/Stockholm",    "sv-SE,sv;q=0.9,en;q=0.8"),
-    "MX": ("es-MX", "America/Mexico_City", "es-MX,es;q=0.9,en;q=0.8"),
+    # North America
+    "US": ("en-US", "America/New_York",       "en-US,en;q=0.9"),
+    "CA": ("en-CA", "America/Toronto",        "en-CA,en;q=0.9,fr;q=0.8"),
+    "MX": ("es-MX", "America/Mexico_City",    "es-MX,es;q=0.9,en;q=0.8"),
+    # South America
+    "BR": ("pt-BR", "America/Sao_Paulo",      "pt-BR,pt;q=0.9,en;q=0.8"),
+    "AR": ("es-AR", "America/Argentina/Buenos_Aires", "es-AR,es;q=0.9,en;q=0.8"),
+    "CO": ("es-CO", "America/Bogota",         "es-CO,es;q=0.9,en;q=0.8"),
+    "CL": ("es-CL", "America/Santiago",       "es-CL,es;q=0.9,en;q=0.8"),
+    # Western Europe
+    "GB": ("en-GB", "Europe/London",          "en-GB,en;q=0.9"),
+    "IE": ("en-IE", "Europe/Dublin",          "en-IE,en;q=0.9"),
+    "FR": ("fr-FR", "Europe/Paris",           "fr-FR,fr;q=0.9,en;q=0.8"),
+    "DE": ("de-DE", "Europe/Berlin",          "de-DE,de;q=0.9,en;q=0.8"),
+    "AT": ("de-AT", "Europe/Vienna",          "de-AT,de;q=0.9,en;q=0.8"),
+    "CH": ("de-CH", "Europe/Zurich",          "de-CH,de;q=0.9,fr;q=0.8,en;q=0.7"),
+    "NL": ("nl-NL", "Europe/Amsterdam",       "nl-NL,nl;q=0.9,en;q=0.8"),
+    "BE": ("fr-BE", "Europe/Brussels",        "fr-BE,fr;q=0.9,nl;q=0.8,en;q=0.7"),
+    "ES": ("es-ES", "Europe/Madrid",          "es-ES,es;q=0.9,en;q=0.8"),
+    "PT": ("pt-PT", "Europe/Lisbon",          "pt-PT,pt;q=0.9,en;q=0.8"),
+    "IT": ("it-IT", "Europe/Rome",            "it-IT,it;q=0.9,en;q=0.8"),
+    "SE": ("sv-SE", "Europe/Stockholm",       "sv-SE,sv;q=0.9,en;q=0.8"),
+    "NO": ("nb-NO", "Europe/Oslo",            "nb-NO,nb;q=0.9,en;q=0.8"),
+    "DK": ("da-DK", "Europe/Copenhagen",      "da-DK,da;q=0.9,en;q=0.8"),
+    "FI": ("fi-FI", "Europe/Helsinki",        "fi-FI,fi;q=0.9,en;q=0.8"),
+    # Eastern Europe
+    "PL": ("pl-PL", "Europe/Warsaw",          "pl-PL,pl;q=0.9,en;q=0.8"),
+    "CZ": ("cs-CZ", "Europe/Prague",          "cs-CZ,cs;q=0.9,en;q=0.8"),
+    "SK": ("sk-SK", "Europe/Bratislava",      "sk-SK,sk;q=0.9,en;q=0.8"),
+    "HU": ("hu-HU", "Europe/Budapest",        "hu-HU,hu;q=0.9,en;q=0.8"),
+    "RO": ("ro-RO", "Europe/Bucharest",       "ro-RO,ro;q=0.9,en;q=0.8"),
+    "BG": ("bg-BG", "Europe/Sofia",           "bg-BG,bg;q=0.9,en;q=0.8"),
+    "HR": ("hr-HR", "Europe/Zagreb",          "hr-HR,hr;q=0.9,en;q=0.8"),
+    "RS": ("sr-RS", "Europe/Belgrade",        "sr-RS,sr;q=0.9,en;q=0.8"),
+    "UA": ("uk-UA", "Europe/Kiev",            "uk-UA,uk;q=0.9,en;q=0.8"),
+    "RU": ("ru-RU", "Europe/Moscow",          "ru-RU,ru;q=0.9,en;q=0.8"),
+    "TR": ("tr-TR", "Europe/Istanbul",        "tr-TR,tr;q=0.9,en;q=0.8"),
+    "GR": ("el-GR", "Europe/Athens",          "el-GR,el;q=0.9,en;q=0.8"),
+    # Middle East & Africa
+    "SA": ("ar-SA", "Asia/Riyadh",            "ar-SA,ar;q=0.9,en;q=0.8"),
+    "AE": ("ar-AE", "Asia/Dubai",             "ar-AE,ar;q=0.9,en;q=0.8"),
+    "IL": ("he-IL", "Asia/Jerusalem",         "he-IL,he;q=0.9,en;q=0.8"),
+    "ZA": ("en-ZA", "Africa/Johannesburg",    "en-ZA,en;q=0.9"),
+    "NG": ("en-NG", "Africa/Lagos",           "en-NG,en;q=0.9"),
+    "EG": ("ar-EG", "Africa/Cairo",           "ar-EG,ar;q=0.9,en;q=0.8"),
+    "MA": ("ar-MA", "Africa/Casablanca",      "ar-MA,ar;q=0.9,fr;q=0.8,en;q=0.7"),
+    # Asia Pacific
+    "JP": ("ja-JP", "Asia/Tokyo",             "ja-JP,ja;q=0.9,en;q=0.8"),
+    "CN": ("zh-CN", "Asia/Shanghai",          "zh-CN,zh;q=0.9,en;q=0.8"),
+    "TW": ("zh-TW", "Asia/Taipei",            "zh-TW,zh;q=0.9,en;q=0.8"),
+    "HK": ("zh-HK", "Asia/Hong_Kong",         "zh-HK,zh;q=0.9,en;q=0.8"),
+    "KR": ("ko-KR", "Asia/Seoul",             "ko-KR,ko;q=0.9,en;q=0.8"),
+    "IN": ("hi-IN", "Asia/Kolkata",           "hi-IN,hi;q=0.9,en;q=0.8"),
+    "PK": ("ur-PK", "Asia/Karachi",           "ur-PK,ur;q=0.9,en;q=0.8"),
+    "BD": ("bn-BD", "Asia/Dhaka",             "bn-BD,bn;q=0.9,en;q=0.8"),
+    "SG": ("en-SG", "Asia/Singapore",         "en-SG,en;q=0.9,zh;q=0.8"),
+    "MY": ("ms-MY", "Asia/Kuala_Lumpur",      "ms-MY,ms;q=0.9,en;q=0.8"),
+    "ID": ("id-ID", "Asia/Jakarta",           "id-ID,id;q=0.9,en;q=0.8"),
+    "TH": ("th-TH", "Asia/Bangkok",           "th-TH,th;q=0.9,en;q=0.8"),
+    "VN": ("vi-VN", "Asia/Ho_Chi_Minh",       "vi-VN,vi;q=0.9,en;q=0.8"),
+    "PH": ("en-PH", "Asia/Manila",            "en-PH,en;q=0.9,fil;q=0.8"),
+    # Oceania
+    "AU": ("en-AU", "Australia/Sydney",       "en-AU,en;q=0.9"),
+    "NZ": ("en-NZ", "Pacific/Auckland",       "en-NZ,en;q=0.9"),
 }
 
 _parser = argparse.ArgumentParser(add_help=False)
 _parser.add_argument("-T", "--tor",        action="store_true")
 _parser.add_argument("-P", "--proxy",      action="store_true")
 _parser.add_argument("--debug",            action="store_true")
+_parser.add_argument("--deb",              action="store_true")
 _parser.add_argument("--socks-port",       type=int, default=int(os.environ.get("SOCKS_PORT", 9050)))
 _parser.add_argument("--control-port",     type=int, default=int(os.environ.get("CONTROL_PORT", 9051)))
 _parser.add_argument("--api-port",         type=int, default=int(os.environ.get("API_PORT", 5000)))
@@ -120,6 +170,50 @@ def tor_reset_and_get_ip() -> str:
 def log_ip(ip: str):
     with open(LOG_FILE, "a") as f:
         f.write(f"{time.strftime('%Y-%m-%d %H:%M:%S')} | {ip}\n")
+
+AD_KEYWORDS = ("NEXAFOX PHASE 02", "Crypto Mining", "ell digital products and services?", "120M $GOATED Up For Grabs", "Airdrop 2 Live")
+
+def click_if_keyword(el, text, context, _print, clicked: set):
+    """Click element if text matches keyword, wait for new tab, print its title."""
+    matched = next((kw for kw in AD_KEYWORDS if kw.lower() in text.lower()), None)
+    if not matched or matched in clicked:
+        return
+    clicked.add(matched)
+    _print(f"  [keyword match] '{text[:80]}' — clicking...")
+    try:
+        with context.expect_page(timeout=10000) as new_page_info:
+            el.click(timeout=5000)
+        new_tab = new_page_info.value
+        try:
+            new_tab.wait_for_load_state("domcontentloaded", timeout=20000)
+        except Exception:
+            pass
+        try:
+            title = new_tab.title()
+        except Exception:
+            title = ""
+        _print(f"  [new tab] title: {title} | url: {new_tab.url[:80]}")
+        # if title is still "click" (or empty), wait up to 15s for it to change
+        if not title or title.strip().lower() == "click":
+            deadline = time.time() + 15
+            while time.time() < deadline:
+                time.sleep(1)
+                try:
+                    new_tab.wait_for_load_state("domcontentloaded", timeout=3000)
+                    title = new_tab.title()
+                except Exception:
+                    continue
+                if title and title.strip().lower() != "click":
+                    _print(f"  [new tab] title changed: {title}")
+                    break
+            else:
+                _print("  [new tab] title did not change after 15s")
+        new_tab.close()
+        _print("  [new tab] closed, returning to main tab")
+        context.pages[0].bring_to_front()
+    except Exception as ce:
+        _print(f"  [keyword click] failed: {ce}")
+
 
 def generate_identity():
     name   = ''.join(random.choices(string.ascii_lowercase, k=8))
@@ -186,7 +280,7 @@ def run_session(elements: dict, session_id: int = 0, proxy_config: dict = None):
         _print("═" * 52 + "\n")
 
         launch_kwargs = dict(
-            headless=not _args.debug,
+            headless=not (_args.debug or _args.deb),
             proxy=proxy_config,
             user_agent=chrome_ua,
             viewport=chosen_viewport,
@@ -217,11 +311,28 @@ def run_session(elements: dict, session_id: int = 0, proxy_config: dict = None):
             canvas_salt     = random.randint(1, 255)
             audio_salt      = round(random.uniform(0.001, 0.009), 4)
             tz_offset_map   = {
-                "America/New_York": 300, "America/Sao_Paulo": 180, "America/Mexico_City": 360,
-                "Europe/London": 0, "Europe/Rome": -60, "Europe/Berlin": -60,
-                "Europe/Paris": -60, "Europe/Madrid": -60, "Europe/Amsterdam": -60,
-                "Europe/Warsaw": -60, "Europe/Moscow": -180, "Europe/Istanbul": -180,
-                "Europe/Stockholm": -60, "Asia/Tokyo": -540, "Asia/Shanghai": -480,
+                "America/New_York": 300, "America/Toronto": 300,
+                "America/Sao_Paulo": 180, "America/Mexico_City": 360,
+                "America/Argentina/Buenos_Aires": 180, "America/Bogota": 300,
+                "America/Santiago": 180,
+                "Europe/London": 0, "Europe/Dublin": 0, "Europe/Lisbon": 0,
+                "Europe/Paris": -60, "Europe/Berlin": -60, "Europe/Vienna": -60,
+                "Europe/Zurich": -60, "Europe/Amsterdam": -60, "Europe/Brussels": -60,
+                "Europe/Madrid": -60, "Europe/Rome": -60, "Europe/Stockholm": -60,
+                "Europe/Oslo": -60, "Europe/Copenhagen": -60, "Europe/Helsinki": -120,
+                "Europe/Warsaw": -60, "Europe/Prague": -60, "Europe/Bratislava": -60,
+                "Europe/Budapest": -60, "Europe/Bucharest": -120, "Europe/Sofia": -120,
+                "Europe/Zagreb": -60, "Europe/Belgrade": -60, "Europe/Kiev": -120,
+                "Europe/Moscow": -180, "Europe/Istanbul": -180, "Europe/Athens": -120,
+                "Asia/Riyadh": -180, "Asia/Dubai": -240, "Asia/Jerusalem": -120,
+                "Asia/Kolkata": -330, "Asia/Karachi": -300, "Asia/Dhaka": -360,
+                "Asia/Singapore": -480, "Asia/Kuala_Lumpur": -480,
+                "Asia/Jakarta": -420, "Asia/Bangkok": -420, "Asia/Ho_Chi_Minh": -420,
+                "Asia/Manila": -480, "Asia/Tokyo": -540, "Asia/Seoul": -540,
+                "Asia/Shanghai": -480, "Asia/Taipei": -480, "Asia/Hong_Kong": -480,
+                "Africa/Johannesburg": -120, "Africa/Lagos": -60,
+                "Africa/Cairo": -120, "Africa/Casablanca": 0,
+                "Australia/Sydney": -600, "Pacific/Auckland": -720,
             }
             tz_offset = tz_offset_map.get(chosen_tz, 0)
             webgl_vendors  = [
@@ -405,87 +516,210 @@ def run_session(elements: dict, session_id: int = 0, proxy_config: dict = None):
             _print("Visiting cryptyos.nl.eu.org...")
             try:
                 page.goto("https://cryptyos.nl.eu.org/", wait_until="domcontentloaded", timeout=60000)
-                ad_wait = random.uniform(10, 15)
-                _print(f"Waiting {ad_wait:.1f}s for ads to load...")
-                time.sleep(ad_wait)
+                _print("Waiting for page to reach networkidle...")
+                page.wait_for_load_state("networkidle", timeout=30000)
+                iframes = page.frames[1:]  # skip main frame
+                _print(f"[cryptyos] {len(iframes)} iframes found")
+                _clicked = set()
+                for i, frame in enumerate(iframes):
+                    try:
+                        frame.wait_for_load_state("domcontentloaded", timeout=15000)
+                        texts = frame.locator("*:not(style):not(script)").all_inner_texts()
+                        flat = "\n".join(t.strip() for t in texts if t.strip() and not t.strip().startswith(("{", ".", "#", "html", "body", "table", "a{", "@")))
+                        _print(f"  [iframe {i}] url: {frame.url[:80]}")
+                        if flat:
+                            _print(f"  [iframe {i}] text:\n{flat[:800]}")
+                        # read all alt attributes inside this iframe
+                        elems = frame.locator("[alt]").all()
+                        for j, el in enumerate(elems):
+                            alt = el.get_attribute("alt", timeout=2000)
+                            if alt:
+                                _print(f"  [iframe {i}] elem[{j}] alt: {alt}")
+                                click_if_keyword(el, alt, context, _print, _clicked)
+                    except Exception as fe:
+                        _print(f"  [iframe {i}] {frame.url[:60]} — read failed: {fe}")
+                # target iframe[data-aa="2433217"] specifically via frame_locator
+                try:
+                    fh = page.frame_locator('iframe[data-aa="2433217"]')
+                    # all alt attributes
+                    for j, el in enumerate(fh.locator("[alt]").all()):
+                        alt = el.get_attribute("alt", timeout=2000)
+                        if alt:
+                            _print(f"  [data-aa=2433217] elem[{j}] alt: {alt}")
+                            click_if_keyword(el, alt, context, _print, _clicked)
+                    # all spans inside .text-container
+                    for j, el in enumerate(fh.locator("div.text-container span").all()):
+                        txt = el.inner_text(timeout=2000).strip()
+                        if txt:
+                            _print(f"  [data-aa=2433217] span[{j}]: {txt}")
+                            click_if_keyword(el, txt, context, _print, _clicked)
+                except Exception as fe:
+                    _print(f"  [data-aa=2433217] failed: {fe}")
+                try:
+                    ad_text = page.locator("div.aa_menu a").inner_text(timeout=5000)
+                    _print(f"[aa_menu] {ad_text}")
+                except Exception:
+                    _print("[aa_menu] not found")
             except Exception as e:
                 _print(f"cryptyos visit failed: {e}")
-            input('read the code and extract iframe')
+            time.sleep(random.uniform(8, 14))
 
-            page.goto(f"https://mohmal.eu.org/?{EMAIL}", wait_until="domcontentloaded", timeout=60000)
-            time.sleep(2)
-
-            # --- scan all iframes and print their text content ---
-            _print(f"Found {len(page.frames)} frames (including main)")
-            for i, frame in enumerate(page.frames):
-                try:
-                    _print(f"  frame[{i}] url: {frame.url[:80]}")
-                    text = frame.locator("*").all_inner_texts()
-                    flat = " | ".join(t.strip() for t in text if t.strip())
-                    if flat:
-                        _print(f"  frame[{i}] text: {flat[:500]}")
-                except Exception as e:
-                    _print(f"  frame[{i}] scan failed: {e}")
-            input('read the code and extract iframe')
-
-            for i, frame in enumerate(page.frames[1:][:2]):
-                try:
-                    frame.click("body", timeout=13000)
-                    _print(f"Clicked iframe #{i+1}: {frame.url[:60]}")
-                    time.sleep(1)
-                    try:
-                        text = frame.locator("body").inner_text(timeout=5000).strip()
-                        if text:
-                            _print(f"iframe #{i+1} text: {text[:300]}")
-                    except Exception:
-                        pass
-                except Exception as e:
-                    _print(f"iframe #{i+1} click failed: {e}")
-                if i == 0:
-                    page.bring_to_front()
-                    time.sleep(1)
-
-            page.bring_to_front()
-            time.sleep(10)
-
-            for i, pg in enumerate(context.pages):
-                try:
-                    _print(f"[tab {i}] title: {pg.title()}")
-                except Exception:
-                    _print(f"[tab {i}] title: <navigating>")
-
-            if len(context.pages) > 1:
-                second_tab = context.pages[1]
-                second_tab.bring_to_front()
-                try:
-                    _print(f"Switched to tab 1: {second_tab.title()}")
-                except Exception:
-                    _print("Switched to tab 1: <navigating>")
-                time.sleep(2)
-                page.bring_to_front()
-                try:
-                    _print(f"Back to tab 0: {page.title()}")
-                except Exception:
-                    _print("Back to tab 0: <navigating>")
-
-            target_handler = page
-            for frame in page.frames:
-                if "2420628" in frame.url and frame != page.main_frame:
-                    target_handler = frame
-                    _print(f"Found app frame: {frame.url}")
-                    break
-
+            # --- click Gainers link and re-scan ---
             try:
-                button = target_handler.locator("button:has-text('Random'), a:has-text('Create'), #create-email")
-                button.wait_for(state="visible", timeout=15000)
-                button.click()
-                _print("Clicked the create button.")
+                page.locator('a[href="/gainers"]').click(timeout=5000)
+                page.wait_for_load_state("networkidle", timeout=30000)
+                _print("[gainers] page loaded")
+                iframes = page.frames[1:]
+                _print(f"[gainers] {len(iframes)} iframes found")
+                _clicked = set()
+                for i, frame in enumerate(iframes):
+                    try:
+                        frame.wait_for_load_state("domcontentloaded", timeout=15000)
+                        texts = frame.locator("*:not(style):not(script)").all_inner_texts()
+                        flat = "\n".join(t.strip() for t in texts if t.strip() and not t.strip().startswith(("{", ".", "#", "html", "body", "table", "a{", "@")))
+                        _print(f"  [gainers iframe {i}] url: {frame.url[:80]}")
+                        if flat:
+                            _print(f"  [gainers iframe {i}] text:\n{flat[:800]}")
+                        for j, el in enumerate(frame.locator("[alt]").all()):
+                            alt = el.get_attribute("alt", timeout=2000)
+                            if alt:
+                                _print(f"  [gainers iframe {i}] elem[{j}] alt: {alt}")
+                                click_if_keyword(el, alt, context, _print, _clicked)
+                    except Exception as fe:
+                        _print(f"  [gainers iframe {i}] read failed: {fe}")
+                try:
+                    fh = page.frame_locator('iframe[data-aa="2433217"]')
+                    for j, el in enumerate(fh.locator("[alt]").all()):
+                        alt = el.get_attribute("alt", timeout=2000)
+                        if alt:
+                            _print(f"  [gainers data-aa=2433217] elem[{j}] alt: {alt}")
+                            click_if_keyword(el, alt, context, _print, _clicked)
+                    for j, el in enumerate(fh.locator("div.text-container span").all()):
+                        txt = el.inner_text(timeout=2000).strip()
+                        if txt:
+                            _print(f"  [gainers data-aa=2433217] span[{j}]: {txt}")
+                            click_if_keyword(el, txt, context, _print, _clicked)
+                except Exception as fe:
+                    _print(f"  [gainers data-aa=2433217] failed: {fe}")
             except Exception as e:
-                _print(f"Failed to click mohmal button: {e}")
-                page.screenshot(path=os.path.join(BASE_DIR, f"debug_{session_id}_mohmal.png"))
+                _print(f"[gainers] failed: {e}")
+            time.sleep(random.uniform(8, 14))
 
-            time.sleep(20)
-            _print(f"Current URL: {page.url}")
+            # --- click Watchlist link and re-scan ---
+            try:
+                page.locator('a[href="/watchlist"]').click(timeout=5000)
+                page.wait_for_load_state("networkidle", timeout=30000)
+                _print("[watchlist] page loaded")
+                iframes = page.frames[1:]
+                _print(f"[watchlist] {len(iframes)} iframes found")
+                _clicked = set()
+                for i, frame in enumerate(iframes):
+                    try:
+                        frame.wait_for_load_state("domcontentloaded", timeout=15000)
+                        texts = frame.locator("*:not(style):not(script)").all_inner_texts()
+                        flat = "\n".join(t.strip() for t in texts if t.strip() and not t.strip().startswith(("{", ".", "#", "html", "body", "table", "a{", "@")))
+                        _print(f"  [watchlist iframe {i}] url: {frame.url[:80]}")
+                        if flat:
+                            _print(f"  [watchlist iframe {i}] text:\n{flat[:800]}")
+                        for j, el in enumerate(frame.locator("[alt]").all()):
+                            alt = el.get_attribute("alt", timeout=2000)
+                            if alt:
+                                _print(f"  [watchlist iframe {i}] elem[{j}] alt: {alt}")
+                                click_if_keyword(el, alt, context, _print, _clicked)
+                    except Exception as fe:
+                        _print(f"  [watchlist iframe {i}] read failed: {fe}")
+                try:
+                    fh = page.frame_locator('iframe[data-aa="2433217"]')
+                    for j, el in enumerate(fh.locator("[alt]").all()):
+                        alt = el.get_attribute("alt", timeout=2000)
+                        if alt:
+                            _print(f"  [watchlist data-aa=2433217] elem[{j}] alt: {alt}")
+                            click_if_keyword(el, alt, context, _print, _clicked)
+                    for j, el in enumerate(fh.locator("div.text-container span").all()):
+                        txt = el.inner_text(timeout=2000).strip()
+                        if txt:
+                            _print(f"  [watchlist data-aa=2433217] span[{j}]: {txt}")
+                            click_if_keyword(el, txt, context, _print, _clicked)
+                except Exception as fe:
+                    _print(f"  [watchlist data-aa=2433217] failed: {fe}")
+            except Exception as e:
+                _print(f"[watchlist] failed: {e}")
+            time.sleep(random.uniform(8, 14))
+
+            # page.goto(f"https://mohmal.eu.org/?{EMAIL}", wait_until="domcontentloaded", timeout=60000)
+            # time.sleep(2)
+
+            # # --- scan all iframes and print their text content ---
+            # _print(f"Found {len(page.frames)} frames (including main)")
+            # for i, frame in enumerate(page.frames):
+            #     try:
+            #         _print(f"  frame[{i}] url: {frame.url[:80]}")
+            #         text = frame.locator("*").all_inner_texts()
+            #         flat = " | ".join(t.strip() for t in text if t.strip())
+            #         if flat:
+            #             _print(f"  frame[{i}] text: {flat[:500]}")
+            #     except Exception as e:
+            #         _print(f"  frame[{i}] scan failed: {e}")
+            # input('read the code and extract iframe')
+
+            # for i, frame in enumerate(page.frames[1:][:2]):
+            #     try:
+            #         frame.click("body", timeout=13000)
+            #         _print(f"Clicked iframe #{i+1}: {frame.url[:60]}")
+            #         time.sleep(1)
+            #         try:
+            #             text = frame.locator("body").inner_text(timeout=5000).strip()
+            #             if text:
+            #                 _print(f"iframe #{i+1} text: {text[:300]}")
+            #         except Exception:
+            #             pass
+            #     except Exception as e:
+            #         _print(f"iframe #{i+1} click failed: {e}")
+            #     if i == 0:
+            #         page.bring_to_front()
+            #         time.sleep(1)
+
+            # page.bring_to_front()
+            # time.sleep(10)
+
+            # for i, pg in enumerate(context.pages):
+            #     try:
+            #         _print(f"[tab {i}] title: {pg.title()}")
+            #     except Exception:
+            #         _print(f"[tab {i}] title: <navigating>")
+
+            # if len(context.pages) > 1:
+            #     second_tab = context.pages[1]
+            #     second_tab.bring_to_front()
+            #     try:
+            #         _print(f"Switched to tab 1: {second_tab.title()}")
+            #     except Exception:
+            #         _print("Switched to tab 1: <navigating>")
+            #     time.sleep(2)
+            #     page.bring_to_front()
+            #     try:
+            #         _print(f"Back to tab 0: {page.title()}")
+            #     except Exception:
+            #         _print("Back to tab 0: <navigating>")
+
+            # target_handler = page
+            # for frame in page.frames:
+            #     if "2420628" in frame.url and frame != page.main_frame:
+            #         target_handler = frame
+            #         _print(f"Found app frame: {frame.url}")
+            #         break
+
+            # try:
+            #     button = target_handler.locator("button:has-text('Random'), a:has-text('Create'), #create-email")
+            #     button.wait_for(state="visible", timeout=15000)
+            #     button.click()
+            #     _print("Clicked the create button.")
+            # except Exception as e:
+            #     _print(f"Failed to click mohmal button: {e}")
+            #     page.screenshot(path=os.path.join(BASE_DIR, f"debug_{session_id}_mohmal.png"))
+
+            # time.sleep(20)
+            # _print(f"Current URL: {page.url}")
         finally:
             context.close()
 
@@ -514,6 +748,9 @@ if _args.proxy:
 
 name, email_addr = generate_identity()
 session_id = _args.socks_port
-with Xvfb(width=1920, height=1080, colordepth=24):
+if _args.debug or _args.deb:
     run_session(elements={"email": email_addr, "name": name}, session_id=session_id, proxy_config=proxy_config)
+else:
+    with Xvfb(width=1920, height=1080, colordepth=24):
+        run_session(elements={"email": email_addr, "name": name}, session_id=session_id, proxy_config=proxy_config)
 os.system(f'rm -rf "{os.path.join(BASE_DIR, f"playwright-profile-{session_id}")}"')
